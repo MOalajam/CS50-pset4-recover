@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    if (given_file == NULL) 
+    if (given_file == NULL)
     {
         printf("There is no file !");
         return 1;
@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    fseek(given_file, 0 L, SEEK_END);
+    fseek(given_file, 0L, SEEK_END);
     int size = ftell(given_file);
     rewind(given_file);
 
@@ -41,7 +41,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    fread(buffer, size, 1, given_file);
+    fread(data, size, 1, given_file);
 
 
 
@@ -52,33 +52,33 @@ int main(int argc, char * argv[]) {
 
     char name[8];
 
+    int j = size/ 512 ;
 
 
-
-    for (int i = 0, int j = size / 512; i < j; i += 512) 
+    for (int i = 0  ; i < j; i += 512)
     {
 
         if (data[i] == 0xff && data[i + 1] == 0xd8 && data[i + 2] == 0xff && (data[i + 3] & 0xe0) == 0xe0)
         {
 
 
-            if (index == 0) 
+            if (index == 0)
             {
                 index++;
 
                 sprintf(name, "%03d.jpg", index);
 
-                out_put = fopen(naem, "a");
+                out_put = fopen(name, "a");
 
 
-                for (int k = 0; k < 512; j++) 
+                for (int k = 0; k < 512; k++)
                 {
-                    fwrite(data[i], 1, 1, out_put);
+                    fwrite(&data[i], 1, 1, out_put);
                 }
 
 
 
-            } else if (index > 0) 
+            } else if (index > 0)
             {
                 fclose(out_put);
 
@@ -88,12 +88,12 @@ int main(int argc, char * argv[]) {
 
                 sprintf(name, "%03d.jpg", index);
 
-                out_put = fopen(naem, "a");
+                out_put = fopen(name, "a");
 
 
-                for (int k = 0; k < 512; j++)
+                for (int k = 0; k < 512; k++)
                 {
-                    fwrite(data[i], 1, 1, out_put);
+                    fwrite(&data[i], 1, 1, out_put);
                 }
 
 
@@ -104,14 +104,14 @@ int main(int argc, char * argv[]) {
 
 
 
-        } else if (index > 0) 
+        } else if (index > 0)
         {
 
 
 
-            for (int k = 0; k < 512; j++) 
+            for (int k = 0; k < 512; k++)
             {
-                fwrite(data[i], 1, 1, out_put);
+                fwrite(&data[i], 1, 1, out_put);
             }
 
 
