@@ -64,7 +64,7 @@ int main(int argc, char * argv[]) {
 
             if (index == 0)
             {
-                index++;
+                
 
                 sprintf(name, "%03d.jpg", index);
 
@@ -76,7 +76,7 @@ int main(int argc, char * argv[]) {
                     fwrite(&data[i], 1, 1, out_put);
                 }
 
-
+                     index++;
 
             } else if (index > 0)
             {
@@ -84,7 +84,7 @@ int main(int argc, char * argv[]) {
 
 
 
-                index++;
+               
 
                 sprintf(name, "%03d.jpg", index);
 
@@ -97,7 +97,7 @@ int main(int argc, char * argv[]) {
                 }
 
 
-
+                   index++; 
 
             }
 
