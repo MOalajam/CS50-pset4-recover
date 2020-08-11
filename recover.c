@@ -71,10 +71,10 @@ int main(int argc, char * argv[]) {
                 out_put = fopen(name, "a");
 
 
-                for (int k = 0; k < 512; k++)
-                {
-                    fwrite(&data[i], 1, 1, out_put);
-                }
+               
+                
+                    fwrite(&data[i], 512, 1, out_put);
+                
 
                      index++;
 
@@ -91,10 +91,10 @@ int main(int argc, char * argv[]) {
                 out_put = fopen(name, "a");
 
 
-                for (int k = 0; k < 512; k++)
-                {
-                    fwrite(&data[i], 1, 1, out_put);
-                }
+             
+                
+                    fwrite(&data[i], 512, 1, out_put);
+                
 
 
                    index++; 
@@ -106,13 +106,9 @@ int main(int argc, char * argv[]) {
 
         } else if (index > 0)
         {
-
-
-
-            for (int k = 0; k < 512; k++)
-            {
-                fwrite(&data[i], 1, 1, out_put);
-            }
+         
+                fwrite(&data[i], 512, 1, out_put);
+           
 
 
         }
