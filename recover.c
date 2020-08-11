@@ -52,13 +52,13 @@ int main(int argc, char * argv[]) {
 
     char name[8];
 
-    int j = size/ 512 ;
 
 
-    for (int i = 0  ; i < j; i += 512)
+
+    for (int i = 0  ; i < size; i += 512)
     {
 
-        if (data[i] == 0xff && data[i + 1] == 0xd8 && data[i + 2] == 0xff && (data[i + 3] & 0xe0) == 0xe0)
+        if (data[i] == 0xff && data[i + 1] == 0xd8 && data[i + 2] == 0xff && (data[i + 3] & 0xf0) == 0xe0)
         {
 
 
